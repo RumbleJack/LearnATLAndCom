@@ -1,4 +1,3 @@
-
 // TestTools.h : TestTools 应用程序的主头文件
 //
 #pragma once
@@ -9,7 +8,6 @@
 
 #include "resource.h"       // 主符号
 
-
 // CTestToolsApp:
 // 有关此类的实现，请参阅 TestTools.cpp
 //
@@ -18,7 +16,6 @@ class CTestToolsApp : public CWinAppEx
 {
 public:
 	CTestToolsApp();
-
 
 // 重写
 public:

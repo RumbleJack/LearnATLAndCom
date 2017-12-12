@@ -8,6 +8,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImageToolsPS", "ImageToolsP
 		{A57F7038-6942-4699-8030-EFE9AE7660BD} = {A57F7038-6942-4699-8030-EFE9AE7660BD}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestTools", "..\TestTools\TestTools.vcxproj", "{704C6BFB-2D6F-4CC4-B356-B82C1D4EDBF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -20,6 +22,10 @@ Global
 		{A57F7038-6942-4699-8030-EFE9AE7660BD}.Release|Win32.Build.0 = Release|Win32
 		{F0298C7F-6FC6-4E13-851F-10226196B59B}.Debug|Win32.ActiveCfg = Debug|Win32
 		{F0298C7F-6FC6-4E13-851F-10226196B59B}.Release|Win32.ActiveCfg = Release|Win32
+		{704C6BFB-2D6F-4CC4-B356-B82C1D4EDBF2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{704C6BFB-2D6F-4CC4-B356-B82C1D4EDBF2}.Debug|Win32.Build.0 = Debug|Win32
+		{704C6BFB-2D6F-4CC4-B356-B82C1D4EDBF2}.Release|Win32.ActiveCfg = Release|Win32
+		{704C6BFB-2D6F-4CC4-B356-B82C1D4EDBF2}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

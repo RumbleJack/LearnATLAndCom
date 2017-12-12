@@ -14,8 +14,6 @@
 #endif
 
 using namespace ATL;
-
-
 // CImageToDrawWithLabelLayer
 
 class ATL_NO_VTABLE CImageToDrawWithLabelLayer :
@@ -29,20 +27,19 @@ public:
 		, mHeight(0)
 		, mLabelFlag(TRUE)
 	{
-		mLabelColor.red = mLabelColor.green = mLabelColor.blue = mLabelColor.alpha = 255 ;
+		mLabelColor.red = mLabelColor.green = mLabelColor.blue = mLabelColor.alpha = 255;
 	}
 
-DECLARE_REGISTRY_RESOURCEID(IDR_IMAGETODRAWWITHLABELLAYER)
+	//声明注册资源ID
+	DECLARE_REGISTRY_RESOURCEID(IDR_IMAGETODRAWWITHLABELLAYER)
 
+	//Com组件映射
+	BEGIN_COM_MAP(CImageToDrawWithLabelLayer)
+		COM_INTERFACE_ENTRY(IImageToDrawWithLabelLayer)
+	END_COM_MAP()
 
-BEGIN_COM_MAP(CImageToDrawWithLabelLayer)
-	COM_INTERFACE_ENTRY(IImageToDrawWithLabelLayer)
-END_COM_MAP()
-
-
-
+	//声明项目最终构造
 	DECLARE_PROTECT_FINAL_CONSTRUCT()
-
 	HRESULT FinalConstruct()
 	{
 		return S_OK;
@@ -51,14 +48,20 @@ END_COM_MAP()
 	void FinalRelease()
 	{
 	}
-protected :
-	int	mWidth, mHeight ;
-	CRGBImage mBaseImage ;
-	CRGBAImage mLabel ;
-	CRGBImage mLabeledImage ;
-	COM_STRUCT_CLR_RGBA mLabelColor ;
-	BOOL	mLabelFlag ;
+
+protected:
+	int			mWidth, mHeight;
+	CRGBImage	mBaseImage;
+
+	// 标签图像
+	CRGBAImage	mLabel;
+	COM_STRUCT_CLR_RGBA mLabelColor;
+	BOOL		mLabelFlag;
+
+	CRGBImage	mLabeledImage;
+	
 public:
+	// STDMETHOD，定义了一个返回HRESULT类型的虚方法,调用方式为__stdcall
 	STDMETHOD(CheckValid)(void);
 	STDMETHOD(CreateImage)(LONG Width, LONG Height);
 	STDMETHOD(GetImageSize)(LONG* pWidth, LONG* pHeight);
@@ -70,7 +73,7 @@ public:
 	STDMETHOD(ExportImageLayer)(LONG x0, LONG y0, LONG Width, LONG Height, COM_STRUCT_CLR_RGB * pDataBuf);
 	STDMETHOD(GetImageLayerPixel)(LONG x, LONG y, BYTE* pRed, BYTE* pGreen, BYTE* pBlue);
 	STDMETHOD(ResetLabelLayer)();
-	STDMETHOD(SetDefaultLabelColor)(BYTE Red, BYTE Green, BYTE Blue, BYTE Alpha) ;
+	STDMETHOD(SetDefaultLabelColor)(BYTE Red, BYTE Green, BYTE Blue, BYTE Alpha);
 	STDMETHOD(SetLabelLayerPixel)(LONG x, LONG y);
 	STDMETHOD(SetLabelLayerPixelToColor)(LONG x, LONG y, BYTE Red, BYTE Green, BYTE Blue, BYTE Alpha);
 	STDMETHOD(ImportLabelLayer)(LONG x0, LONG y0, LONG Width, LONG Height, COM_STRUCT_CLR_RGBA* pLayer);
@@ -88,4 +91,5 @@ public:
 
 };
 
+// __uuidof获取GUID，GUID是一种由算法生成的二进制长度为128位的数字标识符，是一种UUID(Universally Unique Identifier)
 OBJECT_ENTRY_AUTO(__uuidof(ImageToDrawWithLabelLayer), CImageToDrawWithLabelLayer)

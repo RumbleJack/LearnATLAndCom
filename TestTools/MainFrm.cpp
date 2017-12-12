@@ -1,4 +1,3 @@
-
 // MainFrm.cpp : CMainFrame 类的实现
 //
 
@@ -12,7 +11,6 @@
 #endif
 
 // CMainFrame
-
 IMPLEMENT_DYNCREATE(CMainFrame, CFrameWndEx)
 
 const int  iMaxUserToolbars = 10;
@@ -198,12 +196,10 @@ LRESULT CMainFrame::OnToolbarCreateNew(WPARAM wp,LPARAM lp)
 BOOL CMainFrame::LoadFrame(UINT nIDResource, DWORD dwDefaultStyle, CWnd* pParentWnd, CCreateContext* pContext) 
 {
 	// 基类将执行真正的工作
-
 	if (!CFrameWndEx::LoadFrame(nIDResource, dwDefaultStyle, pParentWnd, pContext))
 	{
 		return FALSE;
 	}
-
 
 	// 为所有用户工具栏启用自定义按钮
 	BOOL bNameValid;

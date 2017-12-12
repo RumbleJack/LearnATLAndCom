@@ -1,10 +1,8 @@
-
 // TestToolsDoc.cpp : CTestToolsDoc 类的实现
 //
 
 #include "stdafx.h"
-// SHARED_HANDLERS 可以在实现预览、缩略图和搜索筛选器句柄的
-// ATL 项目中进行定义，并允许与该项目共享文档代码。
+// SHARED_HANDLERS 可以在实现预览、缩略图和搜索筛选器句柄的 ATL 项目中进行定义，并允许与该项目共享文档代码。
 #ifndef SHARED_HANDLERS
 #include "TestTools.h"
 #endif
@@ -18,16 +16,13 @@
 #endif
 
 // CTestToolsDoc
-
 IMPLEMENT_DYNCREATE(CTestToolsDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(CTestToolsDoc, CDocument)
 	ON_COMMAND(ID_IMAGETOOLS_CREATION, &CTestToolsDoc::OnImagetoolsCreation)
 END_MESSAGE_MAP()
 
-
 // CTestToolsDoc 构造/析构
-
 CTestToolsDoc::CTestToolsDoc()
 {
 	// TODO: 在此添加一次性构造代码
@@ -45,15 +40,10 @@ BOOL CTestToolsDoc::OnNewDocument()
 
 	// TODO: 在此添加重新初始化代码
 	// (SDI 文档将重用该文档)
-
 	return TRUE;
 }
 
-
-
-
 // CTestToolsDoc 序列化
-
 void CTestToolsDoc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
@@ -67,7 +57,6 @@ void CTestToolsDoc::Serialize(CArchive& ar)
 }
 
 #ifdef SHARED_HANDLERS
-
 // 缩略图的支持
 void CTestToolsDoc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 {
@@ -121,7 +110,6 @@ void CTestToolsDoc::SetSearchContent(const CString& value)
 #endif // SHARED_HANDLERS
 
 // CTestToolsDoc 诊断
-
 #ifdef _DEBUG
 void CTestToolsDoc::AssertValid() const
 {
@@ -134,25 +122,31 @@ void CTestToolsDoc::Dump(CDumpContext& dc) const
 }
 #endif //_DEBUG
 
-
 // CTestToolsDoc 命令
-
-
 void CTestToolsDoc::OnImagetoolsCreation()
 {
 	IImageToDrawWithLabelLayerPtr ImgTools ;
 	if(SUCCEEDED(ImgTools.CreateInstance(__uuidof(ImageToDrawWithLabelLayer), NULL, CLSCTX_INPROC_SERVER)))
 	{
+		//提示接口IImageTools成功创建
 		AfxMessageBox(_T("interface IImageTools is successfully created")) ;
 
+		//创建指定大小的图像
 		ImgTools->CreateImage(500, 500) ;
 		long Width, Height ;
-		ImgTools->GetImageSize(&Width, &Height) ;
+		ImgTools->GetImageSize(&Width, &Height);
+
+		//输出提示信息
 		CString Note ;
 		Note.Format(_T("created image size(%d, %d)"), Width, Height) ;
-		AfxMessageBox(Note) ;
-		ImgTools.Release() ;
+		AfxMessageBox(Note);
+
+		//释放ImgTools
+		ImgTools.Release();
 	}
 	else
-		AfxMessageBox(_T("Failed to create interface IImageTools")) ;
+	{
+		//提示接口IImageTools创建失败
+		AfxMessageBox(_T("Failed to create interface IImageTools"));
+	}
 }

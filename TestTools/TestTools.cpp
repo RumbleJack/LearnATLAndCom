@@ -192,7 +192,6 @@ void CTestToolsApp::OnAppAbout()
 }
 
 // CTestToolsApp 自定义加载/保存方法
-
 void CTestToolsApp::PreLoadState()
 {
 	BOOL bNameValid;

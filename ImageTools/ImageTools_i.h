@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 7.00.0555 */
-/* at Tue Dec 12 10:10:43 2017
+/* at Tue Dec 12 22:50:03 2017
  */
 /* Compiler settings for ImageTools.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 7.00.0555 

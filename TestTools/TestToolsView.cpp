@@ -1,8 +1,7 @@
-
 // TestToolsView.cpp : CTestToolsView 类的实现
-//
 
 #include "stdafx.h"
+
 // SHARED_HANDLERS 可以在实现预览、缩略图和搜索筛选器句柄的
 // ATL 项目中进行定义，并允许与该项目共享文档代码。
 #ifndef SHARED_HANDLERS
@@ -16,9 +15,7 @@
 #define new DEBUG_NEW
 #endif
 
-
 // CTestToolsView
-
 IMPLEMENT_DYNCREATE(CTestToolsView, CView)
 
 BEGIN_MESSAGE_MAP(CTestToolsView, CView)
@@ -51,7 +48,6 @@ BOOL CTestToolsView::PreCreateWindow(CREATESTRUCT& cs)
 }
 
 // CTestToolsView 绘制
-
 void CTestToolsView::OnDraw(CDC* /*pDC*/)
 {
 	CTestToolsDoc* pDoc = GetDocument();
@@ -64,8 +60,6 @@ void CTestToolsView::OnDraw(CDC* /*pDC*/)
 
 
 // CTestToolsView 打印
-
-
 void CTestToolsView::OnFilePrintPreview()
 {
 #ifndef SHARED_HANDLERS
@@ -104,7 +98,6 @@ void CTestToolsView::OnContextMenu(CWnd* /* pWnd */, CPoint point)
 
 
 // CTestToolsView 诊断
-
 #ifdef _DEBUG
 void CTestToolsView::AssertValid() const
 {
@@ -122,6 +115,5 @@ CTestToolsDoc* CTestToolsView::GetDocument() const // 非调试版本是内联的
 	return (CTestToolsDoc*)m_pDocument;
 }
 #endif //_DEBUG
-
 
 // CTestToolsView 消息处理程序

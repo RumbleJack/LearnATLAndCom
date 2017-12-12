@@ -31,18 +31,18 @@ public:
 #endif
 
 protected:  // 控件条嵌入成员
-	CMFCMenuBar       m_wndMenuBar;
-	CMFCToolBar       m_wndToolBar;
-	CMFCStatusBar     m_wndStatusBar;
-	CMFCToolBarImages m_UserImages;
+	CMFCMenuBar				m_wndMenuBar;
+	CMFCToolBar				m_wndToolBar;
+	CMFCStatusBar				m_wndStatusBar;
+	CMFCToolBarImages	m_UserImages;
 
 // 生成的消息映射函数
 protected:
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnViewCustomize();
-	afx_msg LRESULT OnToolbarCreateNew(WPARAM wp, LPARAM lp);
-	DECLARE_MESSAGE_MAP()
+	afx_msg int				OnCreate(LPCREATESTRUCT lpCreateStruct);
+	afx_msg void				OnViewCustomize();
+	afx_msg LRESULT		OnToolbarCreateNew(WPARAM wp, LPARAM lp);
 
+	DECLARE_MESSAGE_MAP()
 };
 
 

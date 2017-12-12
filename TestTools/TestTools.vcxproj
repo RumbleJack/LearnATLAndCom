@@ -56,6 +56,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <PerUserRedirection>true</PerUserRedirection>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
