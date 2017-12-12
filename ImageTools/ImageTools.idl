@@ -1,0 +1,92 @@
+// ImageTools.idl : ImageTools 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(ImageTools.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+// 
+typedef 
+[
+	uuid(ff06c904-e2ac-4928-a634-e245ac375843),
+	helpstring("像素值格式")
+]
+
+enum 
+{
+	[helpstring("单字节灰度")] COM_GRAY_BYTE = 0x00,
+	[helpstring("RGB彩色")] COM_CLR_RGB = 0x01 ,
+	[helpstring("BGR彩色")] COM_CLR_BGR = 0x02 ,
+} COM_ENUM_PIXEL_STYLE ;
+
+typedef struct
+{
+	BYTE red, green, blue ;
+} COM_STRUCT_CLR_RGB ;
+
+typedef struct
+{
+	BYTE blue, green, red ;
+} COM_STRUCT_CLR_BGR ;
+
+typedef struct
+{
+	BYTE red, green, blue, alpha ;
+} COM_STRUCT_CLR_RGBA ;
+
+typedef struct
+{
+	BYTE blue, green, red, alpha ;
+} COM_STRUCT_CLR_BGRA ;
+
+[
+	object,
+	uuid(7F9F4B4C-D912-40F3-887F-E4C917A0186F),
+	pointer_default(unique)
+]
+interface IImageToDrawWithLabelLayer : IUnknown{
+	[helpstring ("检测是否有效（非空)")] HRESULT CheckValid(void);
+	[helpstring ("创建图像")] HRESULT CreateImage([in] LONG Width, [in] LONG Height);
+	[helpstring ("释放图像和图层")] HRESULT Destroy(void);
+	[helpstring ("提取图像尺寸")] HRESULT GetImageSize([in] LONG* pWidth, [in] LONG* pHeight);
+	[helpstring ("使能标记图层")] HRESULT EnableLabelLayer([in] LONG Enable);
+	[helpstring ("检查标记层是否有效")] HRESULT CheckLabelLayerEnabled();
+	[helpstring ("清零指定标记图层")] HRESULT ResetLabelLayer();
+	[helpstring ("选择缺省标记颜色")] HRESULT SetDefaultLabelColor([in] BYTE Red, [in] BYTE Green, [in] BYTE Blue, [in] BYTE Alpha) ;
+	[helpstring ("置1标记图层")] HRESULT SetLabelLayerPixel([in] LONG x, [in] LONG y);
+	[helpstring ("置1标记图层")] HRESULT SetLabelLayerPixelToColor([in] LONG x, [in] LONG y, [in] BYTE Red, [in] BYTE Green, [in] BYTE Blue, [in] BYTE Alpha);
+	[helpstring ("设置图像初始值")] HRESULT ResetImage();
+	[helpstring ("设置单个像素值")] HRESULT SetImageLayerPixel([in] LONG x, [in] LONG y, [in] BYTE red, [in] BYTE green, [in] BYTE blue);
+	[helpstring ("导出单个像素值")] HRESULT GetImageLayerPixel([in] LONG x, [in] LONG y, [in] BYTE* pRed, [in] BYTE* pGreen, [in] BYTE* pBlue);
+	[helpstring ("导入全尺寸图像")] HRESULT ImportFullSizeImage([in] COM_ENUM_PIXEL_STYLE PixelStyle, [in] BYTE * pPixel);
+	[helpstring ("导入图像")] HRESULT ImportImage([in] COM_ENUM_PIXEL_STYLE PixelStyle, [in] LONG x0, [in] LONG y0, [in] LONG Width, [in] LONG Height, [in] BYTE * pPixel);
+	[helpstring ("导出图像层")] HRESULT ExportImageLayer([in] LONG x0, [in] LONG y0, [in] LONG Width, [in] LONG Height, [in] COM_STRUCT_CLR_RGB * pDataBuf);
+	[helpstring ("导入标记层")] HRESULT ImportLabelLayer([in] LONG x0, [in] LONG y0, [in] LONG Width, [in] LONG Height, [in] COM_STRUCT_CLR_RGBA* pLayer);
+	[helpstring ("导出标记层")] HRESULT ExportLabelLayer([in] LONG x0, [in] LONG y0, [in] LONG Width, [in] LONG Height, [in] COM_STRUCT_CLR_RGBA* pBuf);
+	[helpstring ("导出合成图像")] HRESULT ExportImageToDraw([in] LONG x0, [in] LONG y0, [in] LONG Width, [in] LONG Height, [in] COM_STRUCT_CLR_RGB * pBuf);
+	[helpstring ("标记图层画线")] HRESULT DrawLine([in] LONG x0, [in] LONG y0, [in] LONG dx, [in] LONG dy);
+	[helpstring ("标记图层画矩形")] HRESULT DrawRect([in] LONG x0, [in] LONG y0, [in] LONG Width, [in] LONG Height, [in] LONG Fill);
+	[helpstring ("标记图层画圆")] HRESULT DrawCircle([in] FLOAT xCenter, [in] FLOAT yCenter, [in] FLOAT Radius, [in] LONG Fill);
+	[helpstring ("提取图像图层的指针")] HRESULT GetPtrToImageLayerData([out] COM_STRUCT_CLR_RGB ** ppImage);
+	[helpstring ("提取标记图层的指针")] HRESULT GetPtrToLabelLayerData([out] COM_STRUCT_CLR_RGBA ** ppLable);
+	[helpstring ("提取合并后图像的指针")] HRESULT GetPtrToImageToDraw([out] COM_STRUCT_CLR_RGB ** ppImage);
+	[helpstring ("合并标记图层和图像图层")] HRESULT MergeLabelLayerToImage(void);
+};
+[
+	uuid(25733AE3-894D-4C08-BE13-FF3C9F4858F0),
+	version(1.0),
+]
+library ImageToolsLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(A812CDCA-8752-415C-87AA-12B5A0AC5D27)		
+	]
+	coclass ImageToDrawWithLabelLayer
+	{
+		[default] interface IImageToDrawWithLabelLayer;
+	};
+};
+

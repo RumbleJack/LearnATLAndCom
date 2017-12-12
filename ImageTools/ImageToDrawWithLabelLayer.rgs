@@ -1,0 +1,15 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {A812CDCA-8752-415C-87AA-12B5A0AC5D27} = s 'ImageToDrawWithLabelLayer Class'
+		{
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{25733AE3-894D-4C08-BE13-FF3C9F4858F0}'
+			Version = s '1.0'
+		}
+	}
+}

@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImageTools", "ImageTools.vcxproj", "{A57F7038-6942-4699-8030-EFE9AE7660BD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImageToolsPS", "ImageToolsPS.vcxproj", "{F0298C7F-6FC6-4E13-851F-10226196B59B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A57F7038-6942-4699-8030-EFE9AE7660BD} = {A57F7038-6942-4699-8030-EFE9AE7660BD}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A57F7038-6942-4699-8030-EFE9AE7660BD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A57F7038-6942-4699-8030-EFE9AE7660BD}.Debug|Win32.Build.0 = Debug|Win32
+		{A57F7038-6942-4699-8030-EFE9AE7660BD}.Release|Win32.ActiveCfg = Release|Win32
+		{A57F7038-6942-4699-8030-EFE9AE7660BD}.Release|Win32.Build.0 = Release|Win32
+		{F0298C7F-6FC6-4E13-851F-10226196B59B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F0298C7F-6FC6-4E13-851F-10226196B59B}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
